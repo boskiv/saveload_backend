@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  postgres:
+    image: postgres:alpine
+    environment: 
+      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: 'charting_library'
+      POSTGRES_PASSWORD: 'postgres'
+
+  server: 
+    image: save:local
+    environment: 
+      DB_HOST: 'postgres'
+      DB_NAME: 'charting_library'
+      DB_USER: 'postgres'
+      DB_PASSWORD: 'postgres'
+    depends_on: 
+      - postgres
